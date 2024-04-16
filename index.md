@@ -60,7 +60,7 @@ search_exclude: true
 <div class="parallax-container">
     <!-- Sets up the links to different pages in the site -->
     <div class="parallax-image" style="background-image: url('https://w0.peakpx.com/wallpaper/595/522/HD-wallpaper-grapefruit-lemonade-pink-drink-lemon-lime.jpg')">
-        <a href="http://127.0.0.1:4200/student/game">Game</a>
+        <a href="http://127.0.0.1:4200/student/game">Water Polo</a>
     </div>
     <!-- New section for sleep -->
     <div class="parallax-image" style="background-image: url('https://www.sleep.org.au/image_cache/sleep/default_main_image_001-380x214.jpeg')">
@@ -76,20 +76,16 @@ search_exclude: true
     /* Sets up the different images used when rotating through images, can add new ones into each list, are all organized based on the different heading they appear under */
     const images = [
         [
-            "https://w0.peakpx.com/wallpaper/595/522/HD-wallpaper-grapefruit-lemonade-pink-drink-lemon-lime.jpg",
-            "https://t3.ftcdn.net/jpg/02/98/48/06/360_F_298480639_9Xz6EzHwA3MoKPVvM7S6IRzRFbqpBe8A.jpg",
-            "https://www.southernliving.com/thmb/RxQPgSjPvE_qqjjNPCgJjJeaats=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/4ab70ff2-4373-4805-985f-005ee5256743_0-76feabfb1458442d8aaef8e5bd1bcc7e.png",
-            "https://cache.desktopnexus.com/thumbseg/2700/2700303-bigthumbnail.jpg",
-            "https://t4.ftcdn.net/jpg/06/57/04/13/360_F_657041372_AUVKfXPALQc9u1L2IXJCRtNQG5MJWOR5.jpg",
-            "https://t3.ftcdn.net/jpg/05/09/71/00/360_F_509710059_CdNe0lESIhajbQ5g9MBoJVrzmaNnAbUi.jpg",
-            "https://media.istockphoto.com/id/949446594/photo/pomegranate-tequila-cocktail-summer-light-alcoholic-drink-cooling-aperitif-on-light-background.webp?b=1&s=170667a&w=0&k=20&c=PcFX8YOfHeVYT5wfIA5DHQx9XVlrzkvIsL94HKQMTpM="
+            "https://t3.ftcdn.net/jpg/02/63/47/62/360_F_263476261_hmLxE3xIQHY8KF1PRxGFCMyLBdjKxZnU.jpg",
+            "https://wallpapers.com/images/hd/water-polo-yellow-ball-436aaksptls4edif.jpg",
+            "https://res.cloudinary.com/usopc-prod/image/upload/v1684930080/TeamUSA%20Assets/Migration/Pages/Johnson_Ashleigh_070222_1440x810_Updated.jpg"
 
         ],
         [
-            "https://img.freepik.com/premium-photo/pink-stationery-pink-background_573856-1067.jpg",
-            "https://i.pinimg.com/736x/95/d7/26/95d7264d4ac2564650941330b2b43103.jpg",
-            "https://as2.ftcdn.net/v2/jpg/01/73/81/93/1000_F_173819337_Z4fv6wOPFCP9UXT1iON1Ev2i4HvzXmsx.jpg",
-            "https://marketplace.canva.com/EAFIpxoov1U/1/0/1600w/canva-pink-modern-organizer-desktop-wallpaper-s7kqOFE3dyA.jpg"
+            "https://insider.fitt.co/wp-content/uploads/2024/02/AssaultFitness_Runner_0611-e1709038770512.jpeg",
+            "https://ascendancyfitnessgym.com/img/gallery/gymfloor5.jpg",
+            "https://www.pennmedicine.org/-/media/images/miscellaneous/fitness%20and%20sports/fitness_gear_purple.ashx",
+            "https://media.istockphoto.com/id/1385881889/photo/modern-gym-interior-with-barbell-dumbbells-exercise-bike-and-ultraviolet-neon-lights.jpg?s=612x612&w=0&k=20&c=GidJT63_7UICAyOewzaK-Fl2GFPBNqR0_4PYYEYugCQ="
         ]
     ];
 
@@ -113,13 +109,6 @@ search_exclude: true
     setInterval(changeImages, 3000);
 </script>
 
-<!--Button-->
-
-<a href="{{site.baseurl}}/main_menu" class="button">
-    <button>
-      TBFT SIDE GAME
-    </button>
-  </a>
 </body>
 </html>
 
