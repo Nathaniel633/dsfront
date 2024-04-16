@@ -113,6 +113,25 @@ search_exclude: true
     setInterval(changeImages, 3000);
 </script>
 
+
+<!---Heading text-->
+<h1 style="text-align: center">Project WRONG</h1>
+<h2>Jason Gao, Rayyan Darugar, Grayson Guyot, Nathan Obodovski, Will Bartelt</h2>
+<br>
+
+<!--Image work-->
+<div class="learning">
+    <img src="https://i.postimg.cc/VvyJb6mF/WRONG-learn.png">
+    <img src="https://i.postimg.cc/0jpbGsN1/WRONG-test.png">
+</div>
+
+<!--Buttons-->
+
+<a href="{{site.baseurl}}/main_menu" class="button">
+    <button>
+      TBFT Game
+    </button>
+  </a>
 </body>
 </html>
 
