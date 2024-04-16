@@ -51,7 +51,7 @@ search_exclude: true
             z-index: 1; /* Ensure the title is above the image */
         }
         /* Customize title colors */
-        .parallax-image:nth-child(1) a { color: #6F8DD9; } /* blue */
+        .parallax-image:nth-child(1) a { color: #762DAF; } /* Purple */
         .parallax-image:nth-child(2) a { color: #897FFF; } /* white */
     </style>
 </head>
@@ -64,7 +64,7 @@ search_exclude: true
     </div>
     <!-- New section for sleep -->
     <div class="parallax-image" style="background-image: url('https://www.sleep.org.au/image_cache/sleep/default_main_image_001-380x214.jpeg')">
-        <a href="http://127.0.0.1:4200/student/sleep">Sleep</a>
+        <a href="http://127.0.0.1:4100/Nighthawk-Pages/fitness.html">Fitness</a>
     </div>
     <div class="parallax-bar bar1"></div>
     <div class="parallax-bar bar2"></div>
@@ -117,4 +117,3 @@ search_exclude: true
 </html>
 
 
-# Posts
