@@ -198,6 +198,7 @@ permalink: /charactercreation
             });
         };
         function submitinfo() {
+            window.location.href='{{site.baseurl}}/gamescreen'
             const url = uri + "/api/currentchar/";
             // const url = "http://127.0.0.1:8086/api/currentchar/";
             // get class information from table (which should be updated with the get request)

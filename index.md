@@ -60,11 +60,15 @@ search_exclude: true
 <div class="parallax-container">
     <!-- Sets up the links to different pages in the site -->
     <div class="parallax-image" style="background-image: url('https://w0.peakpx.com/wallpaper/595/522/HD-wallpaper-grapefruit-lemonade-pink-drink-lemon-lime.jpg')">
-        <a href="http://127.0.0.1:4200/student/game">Water Polo</a>
+        <a href="{{site.baseurl}}/score/">Water Polo</a>
     </div>
     <!-- New section for sleep -->
     <div class="parallax-image" style="background-image: url('https://www.sleep.org.au/image_cache/sleep/default_main_image_001-380x214.jpeg')">
-        <a href="http://127.0.0.1:4100/Nighthawk-Pages/fitness.html">Fitness</a>
+        <a href="{{site.baseurl}}/fitness.html">Fitness</a>
+    </div>
+    <!-- TBFT game carousel w/ links -->
+    <div class="parallax-image" style="background-image: url('https://cdn.vox-cdn.com/thumbor/rugU544JimUJ6WKr9TJEUY2duYk=/0x0:2040x1360/1820x1213/filters:focal(907x191:1233x517):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/69435130/tarkov_hero.0.jpg')">
+        <a href="{{site.baseurl}}/main_menu">TBFT Simulator</a>
     </div>
     <div class="parallax-bar bar1"></div>
     <div class="parallax-bar bar2"></div>
@@ -86,11 +90,16 @@ search_exclude: true
             "https://ascendancyfitnessgym.com/img/gallery/gymfloor5.jpg",
             "https://www.pennmedicine.org/-/media/images/miscellaneous/fitness%20and%20sports/fitness_gear_purple.ashx",
             "https://media.istockphoto.com/id/1385881889/photo/modern-gym-interior-with-barbell-dumbbells-exercise-bike-and-ultraviolet-neon-lights.jpg?s=612x612&w=0&k=20&c=GidJT63_7UICAyOewzaK-Fl2GFPBNqR0_4PYYEYugCQ="
+        ],
+        [
+            "https://cdn.vox-cdn.com/thumbor/rugU544JimUJ6WKr9TJEUY2duYk=/0x0:2040x1360/1820x1213/filters:focal(907x191:1233x517):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/69435130/tarkov_hero.0.jpg",
+            "https://www.esports.net/wp-content/uploads/2023/11/escape-from-tarkov-t-e1700029789713.jpg",
+            "https://www.nme.com/wp-content/uploads/2023/01/Escape-From-Tarkov-Streets-of-Tarkov-1392x884.jpg",
         ]
     ];
 
     const parallaxImages = document.querySelectorAll('.parallax-image');
-    let currentImageIndex = [0, 0];
+    let currentImageIndex = [0, 0, 0];
     // This initializes an array "currentImageIndex" with five elements, all set to 0. This array will keep track of the index of the current image being displayed for each parallax image.
 
     // Function to change images
