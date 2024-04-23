@@ -174,10 +174,10 @@ type: ccc
         }
         document.addEventListener("DOMContentLoaded", function () {
             // Update the base URL of your backend API
-            const API_BASE_URL = 'http://127.0.0.1:8086';  // Update this with the actual base URL of your backend
+            const API_BASE_URL = 'http://127.0.0.1:8080';  // Update this with the actual base URL of your backend
 
             // Update the endpoint URL for sleep data
-            const API_URL = API_BASE_URL + '/api/sleeps';
+            const API_URL = API_BASE_URL + '/api/sleeps/';
 
             // Load all sleep data when the page first loads
             loadAllSleepData();
