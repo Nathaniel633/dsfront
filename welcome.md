@@ -1,7 +1,3 @@
----
-layout: home
-search_exclude: true
----
 <html lang="en">
 
 <head>
