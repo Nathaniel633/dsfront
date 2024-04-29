@@ -201,10 +201,6 @@
                         }
                     }
                 }
-                const editCell = row.insertCell();
-                editCell.innerHTML = '<button class="edit-button">Edit</button>';
-                const deleteCell = row.insertCell();
-                deleteCell.innerHTML = '<button class="delete-button">Delete</button>';
             });
         }
 

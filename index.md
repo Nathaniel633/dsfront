@@ -115,7 +115,7 @@ search_exclude: true
     changeImages();
 
     // Change images every 5 seconds
-    setInterval(changeImages, 5000);
+    setInterval(changeImages, 3000);
 </script>
 
 </body>

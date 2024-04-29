@@ -97,7 +97,7 @@
     }
 
     changeImages();
-    setInterval(changeImages, 5000);
+    setInterval(changeImages, 3000);
 </script>
 
 </body>

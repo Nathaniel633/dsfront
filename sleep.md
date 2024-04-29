@@ -75,19 +75,6 @@ type: ccc
             font-size: 14px; /* Adjust font size to prevent squishing */
             white-space: nowrap; /* Prevent text from wrapping */
         }
-        /* Align the edit and delete buttons */
-        .edit-delete-buttons {
-            margin-top: 10px;
-        }
-        .edit-delete-buttons button {
-            background-color: #e91e63; /* Darker pink background color */
-            color: white;
-            padding: 5px 10px;
-            margin: 2px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
@@ -123,11 +110,7 @@ type: ccc
         </tbody>
     </table>
 
-    <!-- Buttons for edit and delete -->
-    <div class="edit-delete-buttons">
-        <button>Edit</button>
-        <button>Delete</button>
-    </div>
+    
 
 </body>
 </html>
@@ -246,11 +229,6 @@ type: ccc
                         }
                     }
 
-                    // Add edit and delete buttons
-                    const editCell = row.insertCell();
-                    editCell.innerHTML = '<button class="edit-button">Edit</button>'; // Assuming you have a class for edit button
-                    const deleteCell = row.insertCell();
-                    deleteCell.innerHTML = '<button class="delete-button">Delete</button>'; // Assuming you have a class for delete button
                 });
             }
             
