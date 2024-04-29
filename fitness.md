@@ -6,7 +6,7 @@ description: fitness machine learning
 courses: { csp: {week: 25} }
 type: ccc
 ---
-
+<!--This code was based on ChatGPT -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">

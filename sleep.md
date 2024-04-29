@@ -1,3 +1,4 @@
+
 ---
 layout: post
 toc: true
@@ -6,6 +7,8 @@ description:
 courses: { csp: {week: 25} }
 type: ccc
 ---
+
+<!--This code was based on ChatGPT -->
 
 <html lang="en">
 <head>

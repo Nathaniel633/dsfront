@@ -3,7 +3,7 @@ layout: home
 search_exclude: true
 ---
 <html lang="en">
-
+<!--This code was based on ChatGPT -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
