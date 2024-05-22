@@ -137,6 +137,66 @@ permalink: /gamescreen
         9: "https://i.postimg.cc/dtcVjFB0/MapPos9.jpg"
     };
 
+    var imagesKnight = {
+      1: "https://postimg.cc/cgdt3PMW"
+      2: "https://postimg.cc/ppmhKf8m"
+      3: "https://postimg.cc/mPMP5TmR"
+      4: "https://postimg.cc/njVMrBpc"
+      5: "https://postimg.cc/23ZNv3yz"
+      6: "https://postimg.cc/dLcP9vZG"
+      7: "https://postimg.cc/HrTqf22x"
+      8: "https://postimg.cc/mPVvRHXS"
+      9: "https://postimg.cc/94MvfQsH"
+    };
+
+    var imagesMage = {
+      1: "https://postimg.cc/w1CgnJ7b"
+      2: "https://postimg.cc/rd5MTm4y"
+      3: "https://postimg.cc/tZyy4jd3"
+      4: "https://postimg.cc/p5LHKJ6y"
+      5: "https://postimg.cc/8JHGF0wq"
+      6: "https://postimg.cc/s1jsF3gy"
+      7: "https://postimg.cc/vD0MbC4n"
+      8: "https://postimg.cc/fV9h7LB7"
+      9: "https://postimg.cc/Y4NKVPch"
+    };
+
+    var imagesRogue = {
+      1: "https://postimg.cc/8JTGwHFB"
+      2: "https://postimg.cc/zH39PPqW"
+      3: "https://postimg.cc/4K5q4TdV"
+      4: "https://postimg.cc/dhcx80ZG"
+      5: "https://postimg.cc/hfTCPqZv"
+      6: "https://postimg.cc/SnmGSYz1"
+      7: "https://postimg.cc/CRMjTyWW"
+      8: "https://postimg.cc/NL1TKft3"
+      9: "https://postimg.cc/KKM7Q7Xz"
+    };
+
+    var imagesShield = {
+      1: "https://postimg.cc/nCVwcW7t"
+      2: "https://postimg.cc/ctxTCKvc"
+      3: "https://postimg.cc/ftBmH8bx"
+      4: "https://postimg.cc/phZYw2s5"
+      5: "https://postimg.cc/Yvz9fh0F"
+      6: "https://postimg.cc/tspRTpk4"
+      7: "https://postimg.cc/rdbLSk1W"
+      8: "https://postimg.cc/YhkBN8WX"
+      9: "https://postimg.cc/F1vhG9tg"
+    };
+
+    var imagesWizard = {
+      1: "https://postimg.cc/RNRQs1PC"
+      2: "https://postimg.cc/FY6PpgRd"
+      3: "https://postimg.cc/qhTxDmdR"
+      4: "https://postimg.cc/ykkcjqSj"
+      5: "https://postimg.cc/6yMw9SHk"
+      6: "https://postimg.cc/mcM0F6w2"
+      7: "https://postimg.cc/PpX2r6V7"
+      8: "https://postimg.cc/VS1FDGwN"
+      9: "https://postimg.cc/TKjVLVbv"
+    }
+    
     // Define object for possible actions (movement and attack) depending on initial position and update it in text
     var possibleActionPositions = {
         1: [2, 3],
