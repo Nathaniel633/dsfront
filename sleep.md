@@ -1,4 +1,3 @@
-
 ---
 layout: post
 toc: true
@@ -9,7 +8,6 @@ type: ccc
 ---
 
 <!--This code was based on ChatGPT -->
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,7 +20,7 @@ type: ccc
             background-color: #fce4ec; /* Pale pink background color */
             font-family: Arial, sans-serif; /* Set your preferred font */
         }
-/* Styles for the input forms */
+        /* Styles for the input forms */
         form {
             margin-bottom: 20px;
         }
@@ -83,8 +81,8 @@ type: ccc
 <body>
     <h3>Input Hours of Sleep</h3>
     <form id="formToGetOneSleepDetail">
-        <label for="Sleep"><b>How many hours of sleep did you get?:</b></label>
-        <input type="number" id="Sleep" name="Sleep" min="0"  />
+        <label for="Sleep"><b>How many hours of sleep did you get?: (ex. 6.0, 7.5)  </b></label>
+        <input type="number" id="Sleep" name="Sleep" min="0" step="0.1" />
         <button type="submit" value="btnToGetSleepDetail" id="get_sleepy">See Sleep Details</button>
         <div id="getOneSleepDetailResponse"></div>
         <div id="sleepFacts"></div>
@@ -112,13 +110,75 @@ type: ccc
             <!-- Sleep data rows will be dynamically added here -->
         </tbody>
     </table>
-
-    
-
 </body>
 </html>
 
 <script type="module">
+    document.addEventListener("DOMContentLoaded", function () {
+        const API_BASE_URL = 'http://127.0.0.1:8080';
+        const API_URL = API_BASE_URL + '/api/sleeps/';
+
+        loadAllSleepData();
+
+        const getSleepButton = document.getElementById("get_sleepy");
+        getSleepButton.addEventListener("click", getOneSleep);
+
+        function loadAllSleepData() {
+            fetch(API_URL, {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                displayItems(data);
+                console.log("Response from getOneSleep function:", data);
+            })
+            .catch(error => {
+                console.error("Error calling get all sleep data:", error);
+            });
+        }
+
+        function displayItems(items) {
+            const table = document.getElementById("SleepTable");
+            const tableBody = table.querySelector("tbody");
+            tableBody.innerHTML = ""; 
+
+            items.forEach((sleep) => {
+                const row = tableBody.insertRow();
+                row.setAttribute("data-id", sleep.id);
+
+                const dataMapping = {
+                    "Person ID": "id",
+                    "Gender": "gender",
+                    "Age": "age",
+                    "Occupation": "occupation",
+                    "Sleep Duration": "sleep_duration",
+                    "Quality of Sleep": "quality_of_sleep",
+                    "Physical Activity Level": "physical_activity_level",
+                    "Stress Level": "stress_level",
+                    "BMI Category": "bmi_category",
+                    "Blood Pressure": "blood_pressure",
+                    "Heart Rate": "heart_rate",
+                    "Daily Steps": "daily_steps",
+                    "Sleep Disorder": "sleep_disorder"
+                };
+
+                for (const category in dataMapping) {
+                    if (dataMapping.hasOwnProperty(category)) {
+                        const cell = row.insertCell();
+                        const value = sleep[dataMapping[category]];
+
+                        console.log(`Category: ${category}, Value: ${value}`);
+
+                        if (category === "Sleep Duration") {
+                            cell.innerText = value.toFixed(1); // Format to one decimal place
+                        } else {
+                            cell.innerText = value !== undefined ? value : 'N/A'; // Handle undefined values
+                        }
+                    }
+                }
+            });
+        }
+
         function displaySleepFacts(hoursSlept) {
             const factsContainer = document.getElementById("sleepFacts");
             factsContainer.innerHTML = ""; // Clear existing facts
@@ -126,7 +186,6 @@ type: ccc
             let fact = "";
 
             if (hoursSlept < 7) {
-                // Facts about too little sleep
                 const tooLittleFacts = [
                     "Lack of sleep can impair cognitive function.",
                     "Chronic sleep deprivation may increase the risk of heart disease.",
@@ -136,9 +195,8 @@ type: ccc
                 ];
                 fact = tooLittleFacts[Math.floor(Math.random() * tooLittleFacts.length)];
             } else if (hoursSlept >= 7 && hoursSlept <= 9) {
-                // Facts about maintaining a good sleep schedule
                 const goodScheduleFacts = [
-                    "Consistent sleep schedule helps regulate your body's internal clock.",
+                    "A consistent sleep schedule helps regulate your body's internal clock.",
                     "Quality sleep improves memory and cognitive function.",
                     "Avoid caffeine and heavy meals before bedtime for better sleep.",
                     "Maintaining a consistent sleep schedule of 7-9 hours per night helps regulate the body's internal clock, promoting overall well-being and alertness.",
@@ -146,7 +204,6 @@ type: ccc
                 ];
                 fact = goodScheduleFacts[Math.floor(Math.random() * goodScheduleFacts.length)];
             } else if (hoursSlept > 9) {
-                // Facts about too much sleep
                 const tooMuchFacts = [
                     "Oversleeping may increase the risk of obesity and diabetes.",
                     "Excessive sleep can lead to daytime drowsiness and lethargy.",
@@ -158,190 +215,42 @@ type: ccc
 
             factsContainer.innerHTML = `<h4>Sleep Fact:</h4><p>${fact}</p>`;
         }
-        document.addEventListener("DOMContentLoaded", function () {
-            // Update the base URL of your backend API
-            const API_BASE_URL = 'http://127.0.0.1:8080';  // Update this with the actual base URL of your backend
 
-            // Update the endpoint URL for sleep data
-            const API_URL = API_BASE_URL + '/api/sleeps/';
+        function getOneSleep(event) {
+            event.preventDefault();
 
-            // Load all sleep data when the page first loads
-            loadAllSleepData();
+            const form = document.getElementById('formToGetOneSleepDetail');
+            const sleepInput = form.elements['Sleep'];
+            const sleepDuration = parseFloat(sleepInput.value);
 
-            // Link getOneSleep to formToGetOneSleepDetail
-            const getSleepButton = document.getElementById("get_sleepy"); // Update to match the button ID
-            getSleepButton.addEventListener("click", getOneSleep);
+            if (!isNaN(sleepDuration)) {
+                console.log("Sleep duration:", sleepDuration);
+                displaySleepFacts(sleepDuration);
 
-
-        
-            // Function to load all sleep data
-            function loadAllSleepData() {
-                fetch(API_URL, {
-                    method: 'GET'
-                }) 
-                .then(response => response.json())
-                .then(data => {
-                    displayItems(data);
-                    console.log("Response from getOneSleep function:", data);
-
-                })
-                .catch(error => {
-                    console.error("Error calling get all sleep data:", error);
-                });
-            }
-
-            // Function to display sleep data in the table
-            function displayItems(items) {
-                const table = document.getElementById("SleepTable");
-                const tableBody = table.querySelector("tbody");
-                tableBody.innerHTML = ""; // Clear existing rows before adding new ones
-
-                items.forEach((sleep) => {
-                    const row = tableBody.insertRow();
-                    row.setAttribute("data-id", sleep.id);
-
-                    // Define the mapping of data keys to table categories
-                    const dataMapping = {
-                        "Person ID": "id",
-                        "Gender": "gender",
-                        "Age": "age",
-                        "Occupation": "occupation",
-                        "Sleep Duration": "sleep_duration",
-                        "Quality of Sleep": "quality_of_sleep",
-                        "Physical Activity Level": "physical_activity_level",
-                        "Stress Level": "stress_level",
-                        "BMI Category": "bmi_category",
-                        "Blood Pressure": "blood_pressure",
-                        "Heart Rate": "heart_rate",
-                        "Daily Steps": "daily_steps",
-                        "Sleep Disorder": "sleep_disorder"
-                    };
-
-                    // Loop through the dataMapping object to populate table cells
-                    for (const category in dataMapping) {
-                        if (dataMapping.hasOwnProperty(category)) {
-                            const cell = row.insertCell();
-                            const value = sleep[dataMapping[category]];
-
-                            // Format sleep duration if needed
-                            if (category === "Sleep Duration") {
-                                cell.innerText = `${value} hours`;
-                            } else {
-                                cell.innerText = value;
-                            }
-                        }
-                    }
-
-                });
-            }
-            
-            function getOneSleep(event) {
-                event.preventDefault();
-
-                // Get the form element
-                const form = document.getElementById('formToGetOneSleepDetail');
-
-                // Get the input element from the form
-                const sleepInput = form.elements['Sleep'];
-
-                // Parse the input value as a float
-                const sleepDuration = parseFloat(sleepInput.value);
-
-                // Check if the parsed value is a valid float
-                if (!isNaN(sleepDuration)) {
-                    // Use the parsed float value
-                    console.log("Sleep duration:", sleepDuration);
-
-                    // Display sleep-related facts based on the number of hours slept
-                    displaySleepFacts(sleepDuration);
-
-                    // Update the API URL to include the sleep duration as a query parameter
-                    fetch(`${API_BASE_URL}/api/sleeps?sleep_duration=${sleepDuration}`, {
-                        method: "GET"
-                    })
-                    .then((response) => {
-                        if (response.ok) {
-                            return response.json();
-                        } else {
-                            // Handle server error or other error cases
-                            console.error("Server error:", response.status);
-                            throw new Error("Server error");
-                        }
-                    })
-                    .then((data) => {
-                        // Clear existing table rows
-                        const table = document.getElementById("SleepTable");
-                        const tableBody = table.querySelector("tbody");
-                        tableBody.innerHTML = "";
-
-                        // Display filtered data
-                        displayItems(data);
-                    })
-                    .catch((error) => {
-                        console.error("Error:", error);
-                        // Display an error message to the user
-                        // Example: alert("Error fetching sleep data. Please try again.");
-                    });
-                } else {
-                    // Handle invalid input (e.g., show an error message)
-                    console.error("Invalid input for sleep duration");
-                }
-            }
-
-
-            // Function to submit sleep form data
-            function submitSleepForm(event) {
-                event.preventDefault();
-
-                // Get form data
-                const form = document.getElementById('formToGetOneSleepDetail');
-                const sleepDuration = parseFloat(form.elements['sleepDuration'].value);
-                const sleepQuality = parseInt(form.elements['sleepQuality'].value);
-                const physicalActivityLevel = parseInt(form.elements['physicalActivityLevel'].value);
-                const stressLevel = parseInt(form.elements['stressLevel'].value);
-                const bmiCategory = form.elements['bmiCategory'].value;
-                const bloodPressure = form.elements['bloodPressure'].value;
-                const heartRate = parseInt(form.elements['heartRate'].value);
-                const dailySteps = parseInt(form.elements['dailySteps'].value);
-                const sleepDisorder = form.elements['sleepDisorder'].value;
-
-                // Create payload
-                const payload = {
-                    sleepDuration,
-                    sleepQuality,
-                    physicalActivityLevel,
-                    stressLevel,
-                    bmiCategory,
-                    bloodPressure,
-                    heartRate,
-                    dailySteps,
-                    sleepDisorder
-                };
-
-                // Submit data to the server
-                fetch(API_URL, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(payload),
+                fetch(`${API_BASE_URL}/api/sleeps/hours/${sleepDuration}`, {
+                    method: "GET"
                 })
                 .then((response) => {
                     if (response.ok) {
                         return response.json();
                     } else {
-                        alert("Server error");
+                        console.error("Server error:", response.status);
                         throw new Error("Server error");
                     }
                 })
                 .then((data) => {
-                    console.log("Sleep data submitted successfully:", data);
-                    // Optionally, perform additional actions after successful submission
+                    const table = document.getElementById("SleepTable");
+                    const tableBody = table.querySelector("tbody");
+                    tableBody.innerHTML = "";
+
+                    displayItems(data);
                 })
                 .catch((error) => {
                     console.error("Error:", error);
                 });
+            } else {
+                console.error("Invalid input for sleep duration");
             }
-
-            
-        });
+        }
+    });
+</script>

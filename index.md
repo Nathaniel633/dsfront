@@ -114,7 +114,7 @@ search_exclude: true
     // Initial call to change images
     changeImages();
 
-    // Change images every 5 seconds
+    // Change images every 3 seconds
     setInterval(changeImages, 3000);
 </script>
 

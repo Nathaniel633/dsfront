@@ -44,7 +44,7 @@ type: ccc
         }
         #calculate-calories {
             display: block;
-            width: 50%; /* Less width */
+            width: 50%; 
             margin: 0 auto; /* Center align */
             padding: 10px;
             background-color: #8a2be2; /* Purple */
@@ -133,7 +133,7 @@ type: ccc
                 "Exercise reduces the risk of chronic diseases: Regular exercise plays a crucial role in preventing and managing chronic diseases, such as heart disease, diabetes, and cancer. Physical activity helps control weight, lower blood pressure and cholesterol levels, improve blood sugar regulation, and reduce inflammation, all of which contribute to better overall health and reduced disease risk."
 
             ];
-            var randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            var randomMessage = messages[Math.floor(Math.random() * messages.length)]; //round estimated calories burnt to two decimals
             document.getElementById('fitness-message').innerText = randomMessage;
         })
         .catch(error => {
