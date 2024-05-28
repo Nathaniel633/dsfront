@@ -23,6 +23,7 @@ search_exclude: true
             overflow-x: hidden;
             overflow-y: auto;
             position: relative;
+            padding-top: 20px; /* Add padding to push everything down */
         }
         .parallax-image {
             background-attachment: fixed; /* Fix the background image for parallax effect */
