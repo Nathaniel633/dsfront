@@ -58,7 +58,13 @@ permalink: /charactercreation
                 </tr>
                 </thead>
                 <tbody id="result">
-                <!-- Generated data goes here -->
+                    <tr>
+                        <th scope="row">Mage</th>
+                        <th scope="row">1000</th>
+                        <th scope="row">10000</th>
+                        <th scope="row">3</th>
+                        <th scope="row">7</th>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -154,7 +160,8 @@ permalink: /charactercreation
                         const range = document.createElement("td");
                         const movement = document.createElement("td");
                         // data is specific to the API
-                        classname.innerHTML = row.classname; 
+                        classname.innerHTML = row.classname;
+                        console.log(classname)
                         health.innerHTML = row.health; 
                         attack.innerHTML = row.attack;
                         range.innerHTML = row.range;
@@ -197,6 +204,7 @@ permalink: /charactercreation
                 resultContainer.appendChild(tr);
             });
         };
+        /*
         function submitinfo() {
             window.location.href='{{site.baseurl}}/gamescreen'
             const url = uri + "/api/currentchar/";
@@ -241,7 +249,58 @@ permalink: /charactercreation
             .catch(err => {
             console.log(err)
             });
+        } */
+    function submitinfo() {
+        var table = document.getElementById("result");
+        console.log(table)
+        if (!table || table.rows.length === 0) {
+            console.error("Table is not available or empty.");
+            return; // Exit if table is not ready or empty
         }
-        window.submitinfo = submitinfo;
+        var row = table.rows[0]; // Assuming you want the first row
+        var cells = row.cells;
+        if (cells.length < 5) {
+            console.error("Not enough data in the row.");
+            return; // Exit if there are not enough cells
+        };
+        console.log(cells[0].innerText)
+        const body = {
+            name: document.getElementById("name").value,
+            classname: cells[0].innerText,
+            health: cells[1].innerText,
+            attack: cells[2].innerText,
+            range: cells[3].innerText === 'true', // Assuming the API expects a boolean
+            movement: cells[4].innerText === 'true'
+        };
+        const AuthOptions = {
+            mode: 'cors',
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            method: 'PUT',
+            cache: 'no-cache',
+            body: JSON.stringify(body)
+        };
+        // Perform the API request
+        fetch(uri + "/api/currentchar/", AuthOptions)
+            .then(response => {
+                if (response.status !== 200) {
+                    console.error("Failed to update character:", response.status);
+                    return;
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data) {
+                    console.log("Character updated successfully", data);
+                    window.location.href = '{{site.baseurl}}/gamescreen'; // Redirect on success
+                }
+            })
+            .catch(err => {
+                console.error("Error during fetch operation:", err);
+            });
+        };
+            window.submitinfo = submitinfo;
     </script>
 </body>
