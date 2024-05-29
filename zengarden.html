@@ -90,11 +90,22 @@ search_exclude: true
                 let totalEmotions = 0;
                 for (const [color, count] of Object.entries(emotionCount)) {
                     totalEmotions += count;
-                    const listItem = document.createElement('li');
-                    listItem.textContent = `${color.toUpperCase()} - ${count}`;
-                    countElement.appendChild(listItem);
+                    const existingItem = countElement.querySelector(`li[data-color="${color}"]`);
+                    if (existingItem) {
+                        existingItem.textContent = `${color.toUpperCase()} - ${count}`;
+                    } else {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `${color.toUpperCase()} - ${count}`;
+                        listItem.setAttribute('data-color', color); // Set color as data attribute
+                        countElement.appendChild(listItem);
+                    }
                 }
-                countElement.insertAdjacentHTML('beforebegin', `<p>Total Emotions: ${totalEmotions}</p>`);
+                let totalElement = countElement.querySelector('p');
+                if (!totalElement) {
+                    totalElement = document.createElement('p');
+                    countElement.insertAdjacentElement('beforebegin', totalElement);
+                }
+                 totalElement.textContent = `Total Emotions: ${totalEmotions}`;
             }
 
             function increaseEmotionCount(color) {
@@ -276,7 +287,6 @@ search_exclude: true
     </div>
     <div id="zen-garden" style="display: none;" onclick="addEmotion(event)"></div>
     <div id="emotion-count" style="display: none;"></div>
-        <h3>Emotion Count</h3>
         <ul id="emotion-list"></ul>
     </div>
     <div id="player-info" style="display: none;"></div>
