@@ -37,7 +37,6 @@ search_exclude: true
             }
         }
 
-        startGame(false);
         //ChatGPT was used in helping create this function
             function toggleModal() {
                 const modal = document.getElementById('game-info');
@@ -51,6 +50,8 @@ search_exclude: true
             function restartGame(){
                 window.location.reload();
         }
+
+            startGame(false);
 
             function addEmotion(event) {
                 if (event && event.target.id === "zen-garden") {
@@ -85,17 +86,22 @@ search_exclude: true
             }
         
             function updateEmotionCount() {
-                const countElement = document.getElementById('emotion-count');
+                const countElement = document.getElementById('emotion-list');
                 let totalEmotions = 0;
-                let countText = "Total Emotions: ";
                 for (const [color, count] of Object.entries(emotionCount)) {
                     totalEmotions += count;
-                    countText += `${color.toUpperCase()} - ${count}, `;
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${color.toUpperCase()} - ${count}`;
+                    countElement.appendChild(listItem);
                 }
-                countText = countText.slice(0, -2); // Remove the last comma
-                countText = "Total Emotions: " + totalEmotions + " | " + countText;
-                countElement.textContent = countText;
+                countElement.insertAdjacentHTML('beforebegin', `<p>Total Emotions: ${totalEmotions}</p>`);
             }
+
+            function increaseEmotionCount(color) {
+                emotionCount[color]++;
+                updateEmotionCount();
+            }
+
         //ChatGPT was used to help create this function
             function changeEmotionLocation(){
                 const garden = document.getElementById('zen-garden');
@@ -233,9 +239,9 @@ search_exclude: true
             right: 20px;
             color: black;
             font-size: 18px;
-            display: none; 
+            display: none;
         }
-        
+
         #selection-choice {
             position: absolute;
             top: 80%;
@@ -270,10 +276,12 @@ search_exclude: true
     </div>
     <div id="zen-garden" style="display: none;" onclick="addEmotion(event)"></div>
     <div id="emotion-count" style="display: none;"></div>
+        <h3>Emotion Count</h3>
+        <ul id="emotion-list"></ul>
+    </div>
     <div id="player-info" style="display: none;"></div>
     <div id="selection-choice" style="display: none;">
     <div id="selection-choice" style="display: none;">
-    </div>  
         <button onclick="restartGame()">Restart</button>
 </div>
 </body>
